@@ -1,0 +1,122 @@
+.login-page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 80px;
+    
+}
+
+/* .login-items{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    gap: 10px;
+} */
+
+.login-box {
+    position: relative;
+    background: white;
+    padding: 30% 35px;
+    height: 80%;
+    width: 400px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.login-box h2 {
+    position: absolute;
+    font-size: 40px;
+    left: 11rem;
+    top: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.login-box label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.login-box input[type="email"],
+.login-box input[type="password"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+}
+
+.login-box .forgot-password {
+    text-align: right;
+}
+
+.login-box .login-btn {
+    width: 85%;
+    background: linear-gradient(to right, #4768ad, #3399ff);
+    color: white;
+    border-radius: 30px;
+    border: none;
+    font-size: medium;
+    font-weight: bold;
+    padding: 10px 20px;
+    margin: 35px 0px;
+    cursor: pointer;
+}
+
+.labels {
+    padding-bottom: 20px;
+    font-weight: 545;
+    font-size: 17px;
+    color: #333;
+}
+
+.labels label {
+    padding-left: 10px;
+}
+
+.labels input {
+    font-size: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.forgot-password {
+    margin-top: -10px;
+}
+
+.forgot-password a {
+    text-decoration: none;
+    color: #333;
+}
+
+.social-icons {
+    margin-top: 20px;
+}
+
+.social-icons a {
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.social-icons img {
+    width: 40px;
+}
+
+.signup-link {
+    position: relative;
+}
+
+.signup-link p {
+    position: absolute;
+    top: 60px;
+    left: 65px;
+}
+
+.signup-link a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    padding-left: 5px;
+}

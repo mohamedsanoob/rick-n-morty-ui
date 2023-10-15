@@ -1,23 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './views/Header/Header'
+import { AuthProvider } from './context/AuthContext';
+import MainLayout from './views/MainLayout/MainLayout';
+import { LanguageContext } from './context/LanguageContext';
+import React, { useEffect, useState } from 'react';
 
 function App() {
+  const [currentLang, setCurrentLang] = React.useState("en");
+  let [fetchedData, updateFetchedData] = useState([]);
+
+  let api = `https://rickandmortyapi.com/api/character/?page=1`;
+  console.log(api);
+
+  useEffect(() => {
+    (async function () {
+      let data = await fetch(api).then((res) => res.json());
+      updateFetchedData(data.results)
+      console.log(data.results);
+    })();
+  }, [api])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <LanguageContext.Provider value={{ currentLang, setCurrentLang }}>
+        <AuthProvider>
+          <Header />
+          <MainLayout results={fetchedData} />
+        </AuthProvider>
+      </LanguageContext.Provider>
     </div>
   );
 }

@@ -1,0 +1,19 @@
+.button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button button{
+    border: solid 1px gray;
+    height: 40px;
+    width: 100%;
+}
+
+.details{
+    margin: 10px;
+}
+
+.details p{
+    font-weight: 600;
+}

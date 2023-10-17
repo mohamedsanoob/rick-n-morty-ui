@@ -1,4 +1,4 @@
-.login-page{
+/* .login-page{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,12 +7,7 @@
     
 }
 
-/* .login-items{
-    display: flex;
-    flex-direction: column;
-    width: 30%;
-    gap: 10px;
-} */
+
 
 .login-box {
     position: relative;
@@ -119,4 +114,13 @@
     color: #333;
     font-size: 16px;
     padding-left: 5px;
+} */
+
+
+.login-page{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px;
+    width: 100%s;
 }

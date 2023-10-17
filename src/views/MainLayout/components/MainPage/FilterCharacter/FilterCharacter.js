@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import './FilterCharacter.css'
-
+import { Box, Grid, TextField, Button, MenuItem } from "@mui/material";
 
 export const FilterCharacter = ({ setSearch, updatePageNumber }) => {
     const [filterCharacter, setFilterCharacter] = useState({
@@ -19,54 +18,63 @@ export const FilterCharacter = ({ setSearch, updatePageNumber }) => {
         setSearch(filterCharacter)
     }
 
-    console.log(filterCharacter)
+    console.log("fjjfefkjenfhjebgfkew", filterCharacter)
 
     return (
-        <div className="main">
-            <div className="filters">
-                <label htmlFor="gender">Status</label>
-                <select name="status" onChange={handleChange}>
-                    <option value=""></option>
-                    <option value="alive">Alive</option>
-                    <option value="dead">Dead</option>
-                    <option value="unknown">Unknown</option>
-                </select>
 
-                <label htmlFor="gender">Species</label>
-                <select name="species" onChange={handleChange}>
-                    <option value=""></option>
-                    <option value="human">Human</option>
-                    <option value="alien">Alien</option>
-                </select>
+        <Box component="form" padding={10} sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }}
+            display={"flex"}
+            justifyContent={"center"}>
+            <div>
+                <TextField id="outlined-select-currency"
+                    select
+                    label="Select"
+                    defaultValue="EUR"
+                    name="status"
+                    helperText="Status"
+                    onChange={handleChange}>
+                    <MenuItem value="alive">Alive</MenuItem>
+                    <MenuItem value="dead">Dead</MenuItem>
+                    <MenuItem value="unknown">Unknown</MenuItem>
+                </TextField>
+                <TextField id="outlined-select-currency"
+                    select
+                    label="Select"
+                    defaultValue="EUR"
+                    name="species"
+                    helperText="Species"
+                    onChange={handleChange}>
+                    <MenuItem value="human">Human</MenuItem>
+                    <MenuItem value="alien">Alien</MenuItem>
 
-                <label htmlFor="gender">Type</label>
-                <select name="type" onChange={handleChange}>
-                    <option value=""></option>
-                    <option value="superhuman">Superhuman</option>
-                    <option value="parasite">"Parasite"</option>
-                    <option value="human">Human with antennae</option>
-                </select>
-
-                <label htmlFor="gender">Gender</label>
-                <select name="gender" onChange={handleChange}>
-                    <option value=""></option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="unknown">Unknown</option>
-                </select>
-            </div>
-            <div className="search-bar">
-                <input
-                    placeholder="Search for characters"
-                    className=""
+                </TextField>
+                <TextField id="outlined-select-currency"
+                    select
+                    label="Select"
+                    name="type"
+                    helperText="Type"
+                    onChange={handleChange}>
+                    <MenuItem>Super Human</MenuItem>
+                    <MenuItem>Parasite</MenuItem>
+                    <MenuItem>Human</MenuItem>
+                </TextField>
+                <TextField id="outlined-select-currency"
+                    select
+                    label="Select"
+                    name="gender"
+                    helperText="Filter by gender"
+                    onChange={handleChange}>
+                    <MenuItem value="male">Male</MenuItem>
+                    <MenuItem value="female">Female</MenuItem>
+                    <MenuItem value="unkown">Unknown</MenuItem>
+                </TextField>
+                <TextField id="outlined-basic"
+                    label="Search Here"
+                    variant="outlined"
                     name="name"
-                    type="text"
-                    onChange={handleChange}
-                />
+                    onChange={handleChange} />
+                <Button variant="contained" size="large" style={{ margin: "10px" }} onClick={handleSubmit}>Serach</Button>
             </div>
-            <div className="submit-btn">
-                <button onClick={handleSubmit}>Search</button>
-            </div>
-        </div>
+        </Box>
     )
 };

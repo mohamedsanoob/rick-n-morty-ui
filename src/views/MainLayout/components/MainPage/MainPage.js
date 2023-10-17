@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { apiCall } from "../../../../services/fetchApi";
 import { FilterCharacter } from "./FilterCharacter/FilterCharacter";
-
-import './MainPage.css'
 import ShowDetails from "./ShowDetails/ShowDetails";
+import { Grid, Card, CardMedia, CardContent, Typography, CardActions, Button } from "@mui/material";
+import './MainPage.css'
 
 const MainPage = () => {
 
     const [fetchedData, setFetchedData] = useState([]);
-    let [pageNumber, setPageNumber] = useState(1);
     let [search, setSearch] = useState({ name: "", page: 1 });
-    const [page, setPage] = useState()
 
     const handlePrev = () => {
         setSearch(prevState => {
@@ -24,11 +22,9 @@ const MainPage = () => {
         })
     };
 
-
     useEffect(() => {
         (async function () {
             let data = await apiCall(search.name, search.page, search.gender, search.status)
-
             setFetchedData(data);
             console.log(data);
         })();
@@ -36,29 +32,47 @@ const MainPage = () => {
 
 
     return (
-
         <div>
             <FilterCharacter setSearch={setSearch} />
-            <div className="items">
+            <Grid container spacing={4} padding={5} marginBottom={10}>
                 {fetchedData.map((item, index) => {
-
                     return (
-                        <div key={index} className="hello">
-                            <div className="card" >
-                                <img src={item.image} alt="" />
-                                <div className="container">
-                                    <h4>{item.name}</h4>
-                                    <p>{item.location.name}</p>
-                                </div>
+
+                        <Grid key={index} item xs={12} sm={6} md={4} lg={3}>
+                            <Card>
+                                <CardMedia component="img"
+
+                                    image={item.image}
+                                    alt="name">
+                                </CardMedia>
+                                <CardContent>
+                                    <Typography>
+                                        {item.name}
+                                    </Typography>
+                                    <Typography>
+                                        {item.location.name}
+                                    </Typography>
+                                </CardContent>
                                 <ShowDetails item={item} />
-                            </div>
-                        </div>
+                            </Card>
+                        </Grid>
                     )
                 })}
-            </div>
-            <div className="pagination-button">
-                <button onClick={handlePrev}>Prev</button>
-                <button onClick={handleNext}>Next</button>
+            </Grid>
+            <div className="buttons"
+                style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    marginBottom: "30px"
+                }}
+                spacing={4}>
+                <Button onClick={handlePrev} variant="outlined" style={{ marginRight: "10px" }}>
+                    Prev
+                </Button>
+                <Button onClick={handleNext} variant="outlined">
+                    Next
+                </Button>
             </div>
         </div>
     )

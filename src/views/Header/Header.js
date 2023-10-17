@@ -1,21 +1,23 @@
 import React from "react";
-import './Header.css'
 import { useAuth } from "../../context/AuthContext";
+import { AppBar, Box, Toolbar, Typography, Button } from "@mui/material";
 
 function Header() {
     const { isLoggedIn, setIsLoggedIn } = useAuth(useAuth);
 
     return (
-        <div className="navbar">
-            <div className="title">
-                <h2>Rick & Morty</h2>
-            </div>
-            <div className="logo">
-                {isLoggedIn && <button onClick={() => setIsLoggedIn(false)}>
-                    Log out
-                </button>}
-            </div>
-        </div>
+        <Box sx={{ flexGrow: 1 }}>
+            <AppBar position="static">
+                <Toolbar >
+                    <Typography variant="h5" sx={{ flexGrow: 1 }}>
+                        Ricky & Morty
+                    </Typography>
+                    {isLoggedIn && <Button onClick={() => setIsLoggedIn(false)} color="inherit">
+                        Log out
+                    </Button>}
+                </Toolbar>
+            </AppBar>
+        </Box>
     )
 }
 
